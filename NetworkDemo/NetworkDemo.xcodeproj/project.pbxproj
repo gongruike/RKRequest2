@@ -21,13 +21,12 @@
 		9FD4F99C1CE097D10074D949 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA69C3C1CDED8ED0050E97B /* SwiftyJSON.framework */; };
 		9FD4F99D1CE097D10074D949 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA69C3C1CDED8ED0050E97B /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9FD4F99F1CE097D10074D949 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA69C341CDD84170050E97B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9FE120C51CE6174100329044 /* RKNetworkActivityPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120BE1CE6174100329044 /* RKNetworkActivityPlugin.swift */; };
-		9FE120C61CE6174100329044 /* RKNetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120BF1CE6174100329044 /* RKNetworkLoggerPlugin.swift */; };
-		9FE120C71CE6174100329044 /* RKBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120C01CE6174100329044 /* RKBaseRequest.swift */; };
-		9FE120C81CE6174100329044 /* RKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120C11CE6174100329044 /* RKError.swift */; };
-		9FE120C91CE6174100329044 /* RKRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120C21CE6174100329044 /* RKRequest.swift */; };
-		9FE120CA1CE6174100329044 /* RKRequestQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120C31CE6174100329044 /* RKRequestQueue.swift */; };
-		9FE120CB1CE6174100329044 /* RKTypeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120C41CE6174100329044 /* RKTypeRequest.swift */; };
+		9FE120D51CE6222800329044 /* RKNetworkActivityPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120CE1CE6222800329044 /* RKNetworkActivityPlugin.swift */; };
+		9FE120D61CE6222800329044 /* RKNetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120CF1CE6222800329044 /* RKNetworkLoggerPlugin.swift */; };
+		9FE120D71CE6222800329044 /* RKBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120D01CE6222800329044 /* RKBaseRequest.swift */; };
+		9FE120D91CE6222800329044 /* RKRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120D21CE6222800329044 /* RKRequest.swift */; };
+		9FE120DA1CE6222800329044 /* RKRequestQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120D31CE6222800329044 /* RKRequestQueue.swift */; };
+		9FE120DB1CE6222800329044 /* RKTypeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120D41CE6222800329044 /* RKTypeRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,13 +80,12 @@
 		9FA69C3C1CDED8ED0050E97B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = NetworkDemo/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9FA69C3E1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
 		9FA69C401CDED97F0050E97B /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
-		9FE120BE1CE6174100329044 /* RKNetworkActivityPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKNetworkActivityPlugin.swift; sourceTree = "<group>"; };
-		9FE120BF1CE6174100329044 /* RKNetworkLoggerPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKNetworkLoggerPlugin.swift; sourceTree = "<group>"; };
-		9FE120C01CE6174100329044 /* RKBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKBaseRequest.swift; sourceTree = "<group>"; };
-		9FE120C11CE6174100329044 /* RKError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKError.swift; sourceTree = "<group>"; };
-		9FE120C21CE6174100329044 /* RKRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequest.swift; sourceTree = "<group>"; };
-		9FE120C31CE6174100329044 /* RKRequestQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequestQueue.swift; sourceTree = "<group>"; };
-		9FE120C41CE6174100329044 /* RKTypeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKTypeRequest.swift; sourceTree = "<group>"; };
+		9FE120CE1CE6222800329044 /* RKNetworkActivityPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKNetworkActivityPlugin.swift; sourceTree = "<group>"; };
+		9FE120CF1CE6222800329044 /* RKNetworkLoggerPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKNetworkLoggerPlugin.swift; sourceTree = "<group>"; };
+		9FE120D01CE6222800329044 /* RKBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKBaseRequest.swift; sourceTree = "<group>"; };
+		9FE120D21CE6222800329044 /* RKRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequest.swift; sourceTree = "<group>"; };
+		9FE120D31CE6222800329044 /* RKRequestQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequestQueue.swift; sourceTree = "<group>"; };
+		9FE120D41CE6222800329044 /* RKTypeRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKTypeRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +140,7 @@
 		9FA69BFA1CDD83910050E97B /* NetworkDemo */ = {
 			isa = PBXGroup;
 			children = (
-				9FE120BC1CE6174100329044 /* RKRequest */,
+				9FE120CC1CE6222800329044 /* RKRequest */,
 				9FA69BFB1CDD83910050E97B /* AppDelegate.swift */,
 				9FA69BFD1CDD83910050E97B /* ViewController.swift */,
 				9FA69C3E1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift */,
@@ -174,24 +172,24 @@
 			path = NetworkDemoUITests;
 			sourceTree = "<group>";
 		};
-		9FE120BC1CE6174100329044 /* RKRequest */ = {
+		9FE120CC1CE6222800329044 /* RKRequest */ = {
 			isa = PBXGroup;
 			children = (
-				9FE120BD1CE6174100329044 /* Plugin */,
-				9FE120C01CE6174100329044 /* RKBaseRequest.swift */,
-				9FE120C11CE6174100329044 /* RKError.swift */,
-				9FE120C21CE6174100329044 /* RKRequest.swift */,
-				9FE120C31CE6174100329044 /* RKRequestQueue.swift */,
-				9FE120C41CE6174100329044 /* RKTypeRequest.swift */,
+				9FE120CD1CE6222800329044 /* Plugin */,
+				9FE120D01CE6222800329044 /* RKBaseRequest.swift */,
+				9FE120D21CE6222800329044 /* RKRequest.swift */,
+				9FE120D31CE6222800329044 /* RKRequestQueue.swift */,
+				9FE120D41CE6222800329044 /* RKTypeRequest.swift */,
 			);
-			path = RKRequest;
+			name = RKRequest;
+			path = ../../RKRequest;
 			sourceTree = "<group>";
 		};
-		9FE120BD1CE6174100329044 /* Plugin */ = {
+		9FE120CD1CE6222800329044 /* Plugin */ = {
 			isa = PBXGroup;
 			children = (
-				9FE120BE1CE6174100329044 /* RKNetworkActivityPlugin.swift */,
-				9FE120BF1CE6174100329044 /* RKNetworkLoggerPlugin.swift */,
+				9FE120CE1CE6222800329044 /* RKNetworkActivityPlugin.swift */,
+				9FE120CF1CE6222800329044 /* RKNetworkLoggerPlugin.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -328,18 +326,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FE120C91CE6174100329044 /* RKRequest.swift in Sources */,
+				9FE120D91CE6222800329044 /* RKRequest.swift in Sources */,
 				9FA69C3F1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift in Sources */,
-				9FE120C51CE6174100329044 /* RKNetworkActivityPlugin.swift in Sources */,
+				9FE120D51CE6222800329044 /* RKNetworkActivityPlugin.swift in Sources */,
 				9FA69BFE1CDD83910050E97B /* ViewController.swift in Sources */,
 				9FA69C371CDD84330050E97B /* HTTPClient.swift in Sources */,
-				9FE120C61CE6174100329044 /* RKNetworkLoggerPlugin.swift in Sources */,
-				9FE120CB1CE6174100329044 /* RKTypeRequest.swift in Sources */,
+				9FE120D61CE6222800329044 /* RKNetworkLoggerPlugin.swift in Sources */,
+				9FE120DB1CE6222800329044 /* RKTypeRequest.swift in Sources */,
 				9FA69C411CDED97F0050E97B /* RequestModel.swift in Sources */,
 				9FA69BFC1CDD83910050E97B /* AppDelegate.swift in Sources */,
-				9FE120CA1CE6174100329044 /* RKRequestQueue.swift in Sources */,
-				9FE120C71CE6174100329044 /* RKBaseRequest.swift in Sources */,
-				9FE120C81CE6174100329044 /* RKError.swift in Sources */,
+				9FE120DA1CE6222800329044 /* RKRequestQueue.swift in Sources */,
+				9FE120D71CE6222800329044 /* RKBaseRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F978A9D1CE71E5F00ED76E2 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */; };
 		9FA69BFC1CDD83910050E97B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69BFB1CDD83910050E97B /* AppDelegate.swift */; };
 		9FA69BFE1CDD83910050E97B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69BFD1CDD83910050E97B /* ViewController.swift */; };
 		9FA69C011CDD83910050E97B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA69BFF1CDD83910050E97B /* Main.storyboard */; };
@@ -22,7 +23,6 @@
 		9FD4F99D1CE097D10074D949 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA69C3C1CDED8ED0050E97B /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9FD4F99F1CE097D10074D949 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA69C341CDD84170050E97B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9FE120D51CE6222800329044 /* RKNetworkActivityPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120CE1CE6222800329044 /* RKNetworkActivityPlugin.swift */; };
-		9FE120D61CE6222800329044 /* RKNetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120CF1CE6222800329044 /* RKNetworkLoggerPlugin.swift */; };
 		9FE120D71CE6222800329044 /* RKBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120D01CE6222800329044 /* RKBaseRequest.swift */; };
 		9FE120D91CE6222800329044 /* RKRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120D21CE6222800329044 /* RKRequest.swift */; };
 		9FE120DA1CE6222800329044 /* RKRequestQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE120D31CE6222800329044 /* RKRequestQueue.swift */; };
@@ -62,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		9FA69BF81CDD83910050E97B /* NetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA69BFB1CDD83910050E97B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FA69BFD1CDD83910050E97B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +82,6 @@
 		9FA69C3E1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
 		9FA69C401CDED97F0050E97B /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		9FE120CE1CE6222800329044 /* RKNetworkActivityPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKNetworkActivityPlugin.swift; sourceTree = "<group>"; };
-		9FE120CF1CE6222800329044 /* RKNetworkLoggerPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKNetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		9FE120D01CE6222800329044 /* RKBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKBaseRequest.swift; sourceTree = "<group>"; };
 		9FE120D21CE6222800329044 /* RKRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequest.swift; sourceTree = "<group>"; };
 		9FE120D31CE6222800329044 /* RKRequestQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequestQueue.swift; sourceTree = "<group>"; };
@@ -115,6 +115,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F978A9B1CE71E2000ED76E2 /* HTTPClient */ = {
+			isa = PBXGroup;
+			children = (
+				9FA69C3E1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift */,
+				9FA69C361CDD84330050E97B /* HTTPClient.swift */,
+				9FA69C401CDED97F0050E97B /* RequestModel.swift */,
+			);
+			name = HTTPClient;
+			sourceTree = "<group>";
+		};
 		9FA69BEF1CDD83910050E97B = {
 			isa = PBXGroup;
 			children = (
@@ -140,12 +150,11 @@
 		9FA69BFA1CDD83910050E97B /* NetworkDemo */ = {
 			isa = PBXGroup;
 			children = (
+				9F978A9B1CE71E2000ED76E2 /* HTTPClient */,
 				9FE120CC1CE6222800329044 /* RKRequest */,
 				9FA69BFB1CDD83910050E97B /* AppDelegate.swift */,
 				9FA69BFD1CDD83910050E97B /* ViewController.swift */,
-				9FA69C3E1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift */,
-				9FA69C361CDD84330050E97B /* HTTPClient.swift */,
-				9FA69C401CDED97F0050E97B /* RequestModel.swift */,
+				9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */,
 				9FA69BFF1CDD83910050E97B /* Main.storyboard */,
 				9FA69C021CDD83910050E97B /* Assets.xcassets */,
 				9FA69C041CDD83910050E97B /* LaunchScreen.storyboard */,
@@ -189,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				9FE120CE1CE6222800329044 /* RKNetworkActivityPlugin.swift */,
-				9FE120CF1CE6222800329044 /* RKNetworkLoggerPlugin.swift */,
 			);
 			path = Plugin;
 			sourceTree = "<group>";
@@ -326,12 +334,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F978A9D1CE71E5F00ED76E2 /* PostTableViewCell.swift in Sources */,
 				9FE120D91CE6222800329044 /* RKRequest.swift in Sources */,
 				9FA69C3F1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift in Sources */,
 				9FE120D51CE6222800329044 /* RKNetworkActivityPlugin.swift in Sources */,
 				9FA69BFE1CDD83910050E97B /* ViewController.swift in Sources */,
 				9FA69C371CDD84330050E97B /* HTTPClient.swift in Sources */,
-				9FE120D61CE6222800329044 /* RKNetworkLoggerPlugin.swift in Sources */,
 				9FE120DB1CE6222800329044 /* RKTypeRequest.swift in Sources */,
 				9FA69C411CDED97F0050E97B /* RequestModel.swift in Sources */,
 				9FA69BFC1CDD83910050E97B /* AppDelegate.swift in Sources */,

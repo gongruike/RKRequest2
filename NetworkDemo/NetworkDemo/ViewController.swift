@@ -1,27 +1,41 @@
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
+    var posts: [Post] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let request = RKBaseSwiftyJSONRequest<Bool>(url: "https://api.app.net/stream/0/posts/stream/global") { response in
+        getPost()
+    }
+    
+    func getPost() {
+        //
+        let request = PostRequest { response in
             switch response {
             case .Success(let result):
-                print(result)
+                // Success
+                self.posts.appendContentsOf(result)
+                self.tableView.reloadData()
             case .Failure(let error):
                 print(error)
             }
         }
         HTTPClient.sharedInstance.startRequest(request)
-        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("PostTableViewCellIdentifier",
+                                                               forIndexPath: indexPath) as! PostTableViewCell
+        return cell
     }
 
 }
+
 

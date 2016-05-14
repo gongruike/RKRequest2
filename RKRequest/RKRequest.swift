@@ -23,7 +23,7 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
     }
     
     /*
-     
+        Parse the aResponse to the final TargetType or generate a error
      */
     public func doParse() -> RKResult {
         return RKResult.Failure(GetIncorrectRequestTypeError())
@@ -40,10 +40,12 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
     }
     
     public override func startRequest() {
+        //
         self.aRequest?.resume()
     }
     
     public override func cancelRequest() {
+        //
         self.aRequest?.cancel()
     }
     

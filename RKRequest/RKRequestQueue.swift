@@ -1,6 +1,11 @@
 import UIKit
 import Alamofire
 
+public protocol PluginType {
+    func willSendRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
+    func didFinishedRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
+}
+
 public class RKRequestQueue {
     //
     public static let sharedQueue: RKRequestQueue = RKRequestQueue()
@@ -27,6 +32,10 @@ public class RKRequestQueue {
         session = Alamofire.Manager(configuration: configuration)
         // Important
         session.startRequestsImmediately = false
+        
+        //
+        plugins.append(RKNetworkActivityPlugin())
+
     }
     
     public func startRequest(request: RKBaseRequest) {
@@ -56,7 +65,4 @@ public class RKRequestQueue {
     
 }
 
-public protocol PluginType {
-    func willSendRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
-    func didFinishedRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
-}
+

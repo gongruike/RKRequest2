@@ -23,7 +23,7 @@ public class RKBaseRequest: Hashable {
     
     public var aRequest: Alamofire.Request?
     
-    init(url: Alamofire.URLStringConvertible) {
+    public init(url: Alamofire.URLStringConvertible) {
         self.url = url
     }
     
@@ -33,7 +33,7 @@ public class RKBaseRequest: Hashable {
     public func prepareRequest(requestQueue: RKRequestQueue) {}
     
     /*
-        Start request
+        Start request and you should prepareRequest(_) before startRequest()
      */
     public func startRequest() {}
     
@@ -48,14 +48,13 @@ public class RKBaseRequest: Hashable {
     public func parseResponse() {}
     
     /*
-        Deliver result or error
+        Deliver result or error in the main thread
      */
     public func deliverResult() {}
     
     /*
         HashValue
         TBD
-        此处需要优化
      */
     public var hashValue: Int { return url.URLString.hashValue + method.rawValue.hashValue + tag.hashValue }
 }

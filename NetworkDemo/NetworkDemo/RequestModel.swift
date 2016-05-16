@@ -3,7 +3,6 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-
 class RKBaseSwiftyJSONRequest<T>: RKRequest<SwiftyJSON.JSON, T> {
     
     override init(url: Alamofire.URLStringConvertible, completionHandler: RKCompletionHandler?) {
@@ -12,9 +11,9 @@ class RKBaseSwiftyJSONRequest<T>: RKRequest<SwiftyJSON.JSON, T> {
     
     override func prepareRequest(requestQueue: RKRequestQueue) {
         //
-        self.requestQueue = requestQueue
-        //
         let finalURL = NSURL(string: url.URLString, relativeToURL: requestQueue.configuration.baseURL)
+        //
+        self.requestQueue = requestQueue
         //
         self.aRequest = self.requestQueue?.session.request(method,
                                                            finalURL!,
@@ -79,6 +78,8 @@ class AvartarRequest: RKRequest<NSData, (NSIndexPath, UIImage)> {
     }
     
 }
+
+
 
 
 

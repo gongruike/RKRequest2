@@ -10,6 +10,19 @@ class RKBaseSwiftyJSONRequest<T>: RKRequest<SwiftyJSON.JSON, T> {
         super.init(url: url, completionHandler: completionHandler)
     }
     
+    override func prepareRequest(requestQueue: RKRequestQueue) {
+        //
+        self.requestQueue = requestQueue
+        //
+        let finalURL = NSURL(string: url.URLString, relativeToURL: requestQueue.configuration.baseURL)
+        //
+        self.aRequest = self.requestQueue?.session.request(method,
+                                                           finalURL!,
+                                                           parameters: parameters,
+                                                           encoding: encoding,
+                                                           headers: headers)
+    }
+    
     override func parseResponse() {
         self.aRequest?.responseSwiftyJSON({ response in
             
@@ -23,7 +36,7 @@ class RKBaseSwiftyJSONRequest<T>: RKRequest<SwiftyJSON.JSON, T> {
 class PostRequest: RKBaseSwiftyJSONRequest<[Post]> {
     // Custom init
     init(completionHandler: RKCompletionHandler?) {
-        super.init(url: "https://api.app.net/stream/0/posts/stream/global",
+        super.init(url: "stream/0/posts/stream/global",
                    completionHandler: completionHandler)
     }
     
@@ -67,34 +80,5 @@ class AvartarRequest: RKRequest<NSData, (NSIndexPath, UIImage)> {
     
 }
 
-typealias JSONContainer = SwiftyJSON.JSON
-
-protocol SwiftyType {
-    init(attribute: JSONContainer)
-}
-
-class Post: SwiftyType {
-
-    let postID: UInt64
-    let text: String
-    
-    required init(attribute: JSONContainer) {
-        postID = attribute["id"].uInt64Value
-        text = attribute["text"].stringValue
-    }
-    
-}
-
-
-class User: SwiftyType {
-    
-    let userID: String
-    let username: String
-    // avatar_image.url
-    required init(attribute: JSONContainer) {
-        userID = attribute["id"].stringValue
-        username = attribute["username"].stringValue
-    }
-}
 
 

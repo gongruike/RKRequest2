@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9F424E911CE972A3000F9369 /* RKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F424E901CE972A3000F9369 /* RKConfiguration.swift */; };
+		9F424E991CE9A88F000F9369 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F424E981CE9A88F000F9369 /* Post.swift */; };
+		9F424E9B1CE9A937000F9369 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F424E9A1CE9A937000F9369 /* RequestModel.swift */; };
 		9F978A9D1CE71E5F00ED76E2 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */; };
 		9FA69BFC1CDD83910050E97B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69BFB1CDD83910050E97B /* AppDelegate.swift */; };
 		9FA69BFE1CDD83910050E97B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69BFD1CDD83910050E97B /* ViewController.swift */; };
@@ -19,7 +21,6 @@
 		9FA69C351CDD84170050E97B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA69C341CDD84170050E97B /* Alamofire.framework */; };
 		9FA69C371CDD84330050E97B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69C361CDD84330050E97B /* HTTPClient.swift */; };
 		9FA69C3F1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69C3E1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift */; };
-		9FA69C411CDED97F0050E97B /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69C401CDED97F0050E97B /* RequestModel.swift */; };
 		9FD4F99C1CE097D10074D949 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA69C3C1CDED8ED0050E97B /* SwiftyJSON.framework */; };
 		9FD4F99D1CE097D10074D949 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA69C3C1CDED8ED0050E97B /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9FD4F99F1CE097D10074D949 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA69C341CDD84170050E97B /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -64,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		9F424E901CE972A3000F9369 /* RKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKConfiguration.swift; sourceTree = "<group>"; };
+		9F424E981CE9A88F000F9369 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		9F424E9A1CE9A937000F9369 /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		9FA69BF81CDD83910050E97B /* NetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA69BFB1CDD83910050E97B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 		9FA69C361CDD84330050E97B /* HTTPClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		9FA69C3C1CDED8ED0050E97B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = NetworkDemo/SwiftyJSON.framework; sourceTree = "<group>"; };
 		9FA69C3E1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
-		9FA69C401CDED97F0050E97B /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 		9FE120CE1CE6222800329044 /* RKNetworkActivityPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKNetworkActivityPlugin.swift; sourceTree = "<group>"; };
 		9FE120D01CE6222800329044 /* RKBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKBaseRequest.swift; sourceTree = "<group>"; };
 		9FE120D21CE6222800329044 /* RKRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequest.swift; sourceTree = "<group>"; };
@@ -122,7 +124,7 @@
 			children = (
 				9FA69C3E1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift */,
 				9FA69C361CDD84330050E97B /* HTTPClient.swift */,
-				9FA69C401CDED97F0050E97B /* RequestModel.swift */,
+				9F424E9A1CE9A937000F9369 /* RequestModel.swift */,
 			);
 			name = HTTPClient;
 			sourceTree = "<group>";
@@ -152,11 +154,12 @@
 		9FA69BFA1CDD83910050E97B /* NetworkDemo */ = {
 			isa = PBXGroup;
 			children = (
-				9F978A9B1CE71E2000ED76E2 /* HTTPClient */,
 				9FE120CC1CE6222800329044 /* RKRequest */,
+				9F978A9B1CE71E2000ED76E2 /* HTTPClient */,
 				9FA69BFB1CDD83910050E97B /* AppDelegate.swift */,
 				9FA69BFD1CDD83910050E97B /* ViewController.swift */,
 				9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */,
+				9F424E981CE9A88F000F9369 /* Post.swift */,
 				9FA69BFF1CDD83910050E97B /* Main.storyboard */,
 				9FA69C021CDD83910050E97B /* Assets.xcassets */,
 				9FA69C041CDD83910050E97B /* LaunchScreen.storyboard */,
@@ -187,10 +190,10 @@
 			isa = PBXGroup;
 			children = (
 				9FE120CD1CE6222800329044 /* Plugin */,
-				9FE120D01CE6222800329044 /* RKBaseRequest.swift */,
 				9FE120D21CE6222800329044 /* RKRequest.swift */,
-				9FE120D31CE6222800329044 /* RKRequestQueue.swift */,
+				9FE120D01CE6222800329044 /* RKBaseRequest.swift */,
 				9F424E901CE972A3000F9369 /* RKConfiguration.swift */,
+				9FE120D31CE6222800329044 /* RKRequestQueue.swift */,
 				9FE120D41CE6222800329044 /* RKTypeRequest.swift */,
 			);
 			name = RKRequest;
@@ -339,12 +342,13 @@
 			files = (
 				9F978A9D1CE71E5F00ED76E2 /* PostTableViewCell.swift in Sources */,
 				9FE120D91CE6222800329044 /* RKRequest.swift in Sources */,
+				9F424E9B1CE9A937000F9369 /* RequestModel.swift in Sources */,
 				9FA69C3F1CDED8F40050E97B /* Alamofire-SwiftyJSON.swift in Sources */,
 				9FE120D51CE6222800329044 /* RKNetworkActivityPlugin.swift in Sources */,
+				9F424E991CE9A88F000F9369 /* Post.swift in Sources */,
 				9FA69BFE1CDD83910050E97B /* ViewController.swift in Sources */,
 				9FA69C371CDD84330050E97B /* HTTPClient.swift in Sources */,
 				9FE120DB1CE6222800329044 /* RKTypeRequest.swift in Sources */,
-				9FA69C411CDED97F0050E97B /* RequestModel.swift in Sources */,
 				9F424E911CE972A3000F9369 /* RKConfiguration.swift in Sources */,
 				9FA69BFC1CDD83910050E97B /* AppDelegate.swift in Sources */,
 				9FE120DA1CE6222800329044 /* RKRequestQueue.swift in Sources */,

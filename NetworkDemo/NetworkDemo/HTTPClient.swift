@@ -8,7 +8,7 @@ class HTTPClient {
     
     init() {
         
-        let configuration = RKConfiguration(baseURL: "")
+        let configuration = RKConfiguration(baseURLString: "https://api.app.net/")
         
         requestQueue = RKRequestQueue(configuration: configuration)
     }

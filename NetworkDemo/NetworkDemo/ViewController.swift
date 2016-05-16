@@ -9,6 +9,7 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         getPost()
+        
     }
     
     func getPost() {

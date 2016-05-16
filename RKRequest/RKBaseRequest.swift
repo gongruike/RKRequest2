@@ -2,8 +2,7 @@ import Foundation
 import Alamofire
 
 /*
-     In Swift collection types like Array or Set can't hold the instancs of a generic class,
-     so I hava to extra a superclass.
+     In Swift, collection types like Array or Set can't hold the instancs of a generic class
  */
 public class RKBaseRequest: Hashable {
     
@@ -33,7 +32,7 @@ public class RKBaseRequest: Hashable {
     public func prepareRequest(requestQueue: RKRequestQueue) {}
     
     /*
-        Start request and you should prepareRequest(_) before startRequest()
+        Start request and must call prepareRequest(_) before startRequest()
      */
     public func startRequest() {}
     

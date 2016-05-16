@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F424E911CE972A3000F9369 /* RKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F424E901CE972A3000F9369 /* RKConfiguration.swift */; };
 		9F978A9D1CE71E5F00ED76E2 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */; };
 		9FA69BFC1CDD83910050E97B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69BFB1CDD83910050E97B /* AppDelegate.swift */; };
 		9FA69BFE1CDD83910050E97B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69BFD1CDD83910050E97B /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9F424E901CE972A3000F9369 /* RKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKConfiguration.swift; sourceTree = "<group>"; };
 		9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		9FA69BF81CDD83910050E97B /* NetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA69BFB1CDD83910050E97B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				9FE120D01CE6222800329044 /* RKBaseRequest.swift */,
 				9FE120D21CE6222800329044 /* RKRequest.swift */,
 				9FE120D31CE6222800329044 /* RKRequestQueue.swift */,
+				9F424E901CE972A3000F9369 /* RKConfiguration.swift */,
 				9FE120D41CE6222800329044 /* RKTypeRequest.swift */,
 			);
 			name = RKRequest;
@@ -342,6 +345,7 @@
 				9FA69C371CDD84330050E97B /* HTTPClient.swift in Sources */,
 				9FE120DB1CE6222800329044 /* RKTypeRequest.swift in Sources */,
 				9FA69C411CDED97F0050E97B /* RequestModel.swift in Sources */,
+				9F424E911CE972A3000F9369 /* RKConfiguration.swift in Sources */,
 				9FA69BFC1CDD83910050E97B /* AppDelegate.swift in Sources */,
 				9FE120DA1CE6222800329044 /* RKRequestQueue.swift in Sources */,
 				9FE120D71CE6222800329044 /* RKBaseRequest.swift in Sources */,

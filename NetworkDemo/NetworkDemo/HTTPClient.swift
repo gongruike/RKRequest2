@@ -7,7 +7,10 @@ class HTTPClient {
     static let sharedInstance: HTTPClient = HTTPClient()
     
     init() {
-        requestQueue = RKRequestQueue()
+        
+        let configuration = RKConfiguration(baseURL: "")
+        
+        requestQueue = RKRequestQueue(configuration: configuration)
     }
     
     func startRequest(request: RKBaseRequest) {
@@ -19,22 +22,3 @@ class HTTPClient {
     
 }
 
-class A {
-
-}
-
-class B: A {
-    init(url: String) {
-        
-    }
-}
-
-class C: B {
-    
-}
-
-class D: C {
-    
-}
-
-let c = D(url: "")

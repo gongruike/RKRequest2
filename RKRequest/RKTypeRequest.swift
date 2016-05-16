@@ -1,34 +1,12 @@
 import UIKit
 import Alamofire
 
-public class RKTypeRequest<T>: RKRequest<T, T> {
-    
-    public override init(url: Alamofire.URLStringConvertible, completionHandler: RKCompletionHandler?) {
-        super.init(url: url, completionHandler: completionHandler)
-    }
-    
-    public override func doParse() -> RKResult {
-        if let response = aResponse {
-            switch response.result {
-            case .Success(let value):
-                return RKResult.Success(value)
-            case .Failure(let error):
-                return RKResult.Failure(error)
-            }
-        } else {
-            return RKResult.Failure(GetIncorrectRequestTypeError())
-        }
-    }
-}
+// 为什么子类查不到父类的init的方法呢？是因为泛型的原因吗？
 
 /*
     字符串请求
  */
-public class RKStringRequest: RKTypeRequest<String> {
-    
-    public override init(url: Alamofire.URLStringConvertible, completionHandler: RKCompletionHandler?) {
-        super.init(url: url, completionHandler: completionHandler)
-    }
+public class RKStringRequest<T>: RKRequest<String, T> {
     
     public override func parseResponse() {
         aRequest?.responseString(completionHandler: { response -> Void in
@@ -43,11 +21,7 @@ public class RKStringRequest: RKTypeRequest<String> {
 /*
     NSData请求
  */
-public class RKDataRequest: RKTypeRequest<NSData> {
-    
-    public override init(url: Alamofire.URLStringConvertible, completionHandler: RKCompletionHandler?) {
-        super.init(url: url, completionHandler: completionHandler)
-    }
+public class RKDataRequest<T>: RKRequest<NSData, T> {
     
     public override func parseResponse() {
         aRequest?.responseData(completionHandler: { response in
@@ -62,11 +36,7 @@ public class RKDataRequest: RKTypeRequest<NSData> {
 /*
     普通JSON请求
  */
-public class RKJSONRequest: RKTypeRequest<AnyObject> {
-    
-    public override init(url: Alamofire.URLStringConvertible, completionHandler: RKCompletionHandler?) {
-        super.init(url: url, completionHandler: completionHandler)
-    }
+public class RKJSONRequest<T>: RKRequest<AnyObject, T> {
     
     override public func parseResponse() {
         aRequest?.responseJSON(completionHandler: { response -> Void in
@@ -74,7 +44,6 @@ public class RKJSONRequest: RKTypeRequest<AnyObject> {
             self.aResponse = response
             self.deliverResult()
         })
-    }
-
+    }    
 }
 

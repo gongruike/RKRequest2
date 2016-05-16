@@ -8,28 +8,20 @@ public protocol PluginType {
 
 public class RKRequestQueue {
     //
-    public static let sharedQueue: RKRequestQueue = RKRequestQueue()
-    //
     public let session: Alamofire.Manager
+    
+    public let configuration: RKConfiguration
     
     public var plugins: [PluginType] = []
     
-    public class func defaultURLSessionConfiguration() -> NSURLSessionConfiguration {
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+    //
+    public init(configuration: RKConfiguration) {
         
-        configuration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders
-        configuration.HTTPShouldUsePipelining = false
-        configuration.HTTPShouldSetCookies = false
+        self.configuration = configuration
         
-        configuration.requestCachePolicy = .UseProtocolCachePolicy
-        configuration.allowsCellularAccess = true
-        configuration.timeoutIntervalForResource = 15
-        
-        return configuration
-    }
-    
-    public init(configuration: NSURLSessionConfiguration = RKRequestQueue.defaultURLSessionConfiguration()) {
-        session = Alamofire.Manager(configuration: configuration)
+        session = Alamofire.Manager(configuration: configuration.configuration,
+                                    delegate: Alamofire.Manager.SessionDelegate(),
+                                    serverTrustPolicyManager: configuration.trustPolicyManager)
         // Important
         session.startRequestsImmediately = false
         

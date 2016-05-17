@@ -14,10 +14,8 @@ class PostTableViewCell: UITableViewCell {
     }
     
     func configureCell(post: Post) {
+        textLabel?.text = post.user.username
         detailTextLabel?.text = post.text
-        
-        if post.text.characters.count > 10 {
-        }
     }
 
 }

@@ -35,7 +35,6 @@ class User: SwiftyType {
     
     let userID: UInt64
     let username: String
-//    let imageURLString: String
     
     required init(attribute: JSONContainer) {
         userID = attribute["id"].uInt64Value

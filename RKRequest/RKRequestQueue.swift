@@ -31,24 +31,23 @@ public protocol PluginType {
 public class RKRequestQueue {
     //
     public let session: Alamofire.Manager
-    
+    //
     public let configuration: RKConfiguration
-    
+    //
     public var plugins: [PluginType] = []
-    
     //
     public init(configuration: RKConfiguration) {
         
         self.configuration = configuration
         
-        session = Alamofire.Manager(configuration: configuration.configuration,
-                                    delegate: Alamofire.Manager.SessionDelegate(),
-                                    serverTrustPolicyManager: configuration.trustPolicyManager)
+        self.session = Alamofire.Manager(configuration: configuration.configuration,
+                                         delegate: Alamofire.Manager.SessionDelegate(),
+                                         serverTrustPolicyManager: configuration.trustPolicyManager)
         // Important
-        session.startRequestsImmediately = false
+        self.session.startRequestsImmediately = false
         
         //
-        plugins.append(RKNetworkActivityPlugin())
+        self.plugins.append(RKNetworkActivityPlugin())
 
     }
     

@@ -7,9 +7,9 @@ class HTTPClient {
     static let sharedInstance: HTTPClient = HTTPClient()
     
     init() {
-        
+        //
         let configuration = RKConfiguration(baseURLString: "https://api.app.net/")
-        
+        //
         requestQueue = RKRequestQueue(configuration: configuration)
     }
     
@@ -17,8 +17,6 @@ class HTTPClient {
         //
         requestQueue.startRequest(request)
     }
-    
-    //
     
 }
 

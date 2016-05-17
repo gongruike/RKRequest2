@@ -10,13 +10,15 @@
 		9F424E911CE972A3000F9369 /* RKConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F424E901CE972A3000F9369 /* RKConfiguration.swift */; };
 		9F424E991CE9A88F000F9369 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F424E981CE9A88F000F9369 /* Post.swift */; };
 		9F424E9B1CE9A937000F9369 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F424E9A1CE9A937000F9369 /* RequestModel.swift */; };
+		9F4852501CEAB60F0058FFD6 /* RKConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F48524F1CEAB60F0058FFD6 /* RKConfigurationTests.swift */; };
+		9F4852521CEAB62D0058FFD6 /* RKRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4852511CEAB62D0058FFD6 /* RKRequestTests.swift */; };
+		9F4852541CEAB6500058FFD6 /* RKRequestQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4852531CEAB6500058FFD6 /* RKRequestQueueTests.swift */; };
 		9F978A9D1CE71E5F00ED76E2 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */; };
 		9FA69BFC1CDD83910050E97B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69BFB1CDD83910050E97B /* AppDelegate.swift */; };
 		9FA69BFE1CDD83910050E97B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69BFD1CDD83910050E97B /* ViewController.swift */; };
 		9FA69C011CDD83910050E97B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA69BFF1CDD83910050E97B /* Main.storyboard */; };
 		9FA69C031CDD83910050E97B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FA69C021CDD83910050E97B /* Assets.xcassets */; };
 		9FA69C061CDD83910050E97B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FA69C041CDD83910050E97B /* LaunchScreen.storyboard */; };
-		9FA69C111CDD83910050E97B /* NetworkDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69C101CDD83910050E97B /* NetworkDemoTests.swift */; };
 		9FA69C1C1CDD83910050E97B /* NetworkDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69C1B1CDD83910050E97B /* NetworkDemoUITests.swift */; };
 		9FA69C351CDD84170050E97B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA69C341CDD84170050E97B /* Alamofire.framework */; };
 		9FA69C371CDD84330050E97B /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69C361CDD84330050E97B /* HTTPClient.swift */; };
@@ -67,6 +69,9 @@
 		9F424E901CE972A3000F9369 /* RKConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKConfiguration.swift; sourceTree = "<group>"; };
 		9F424E981CE9A88F000F9369 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		9F424E9A1CE9A937000F9369 /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
+		9F48524F1CEAB60F0058FFD6 /* RKConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKConfigurationTests.swift; sourceTree = "<group>"; };
+		9F4852511CEAB62D0058FFD6 /* RKRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequestTests.swift; sourceTree = "<group>"; };
+		9F4852531CEAB6500058FFD6 /* RKRequestQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequestQueueTests.swift; sourceTree = "<group>"; };
 		9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		9FA69BF81CDD83910050E97B /* NetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA69BFB1CDD83910050E97B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +81,6 @@
 		9FA69C051CDD83910050E97B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9FA69C071CDD83910050E97B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FA69C0C1CDD83910050E97B /* NetworkDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9FA69C101CDD83910050E97B /* NetworkDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDemoTests.swift; sourceTree = "<group>"; };
 		9FA69C121CDD83910050E97B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9FA69C171CDD83910050E97B /* NetworkDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA69C1B1CDD83910050E97B /* NetworkDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDemoUITests.swift; sourceTree = "<group>"; };
@@ -171,7 +175,9 @@
 		9FA69C0F1CDD83910050E97B /* NetworkDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				9FA69C101CDD83910050E97B /* NetworkDemoTests.swift */,
+				9F4852511CEAB62D0058FFD6 /* RKRequestTests.swift */,
+				9F4852531CEAB6500058FFD6 /* RKRequestQueueTests.swift */,
+				9F48524F1CEAB60F0058FFD6 /* RKConfigurationTests.swift */,
 				9FA69C121CDD83910050E97B /* Info.plist */,
 			);
 			path = NetworkDemoTests;
@@ -360,7 +366,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FA69C111CDD83910050E97B /* NetworkDemoTests.swift in Sources */,
+				9F4852521CEAB62D0058FFD6 /* RKRequestTests.swift in Sources */,
+				9F4852541CEAB6500058FFD6 /* RKRequestQueueTests.swift in Sources */,
+				9F4852501CEAB60F0058FFD6 /* RKConfigurationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,20 +1,14 @@
 //
-//  NetworkDemoTests.swift
-//  NetworkDemoTests
+//  RKRequestQueueTests.swift
+//  NetworkDemo
 //
-//  Created by gongruike on 16/5/7.
+//  Created by gongruike on 16/5/17.
 //  Copyright © 2016年 gongruike. All rights reserved.
 //
 
 import XCTest
-@testable import NetworkDemo
 
-
-class BaseTestCase: XCTestCase {
-    
-}
-
-class NetworkDemoTests: XCTestCase {
+class RKRequestQueueTests: BaseTestCase {
     
     override func setUp() {
         super.setUp()

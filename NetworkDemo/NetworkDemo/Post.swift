@@ -20,21 +20,26 @@ class Post: SwiftyType {
     let postID: UInt64
     let text: String
     
+    let user: User
+    
     required init(attribute: JSONContainer) {
         postID = attribute["id"].uInt64Value
         text = attribute["text"].stringValue
+        
+        user = User(attribute: attribute["user"])
     }
     
 }
-
 
 class User: SwiftyType {
     
-    let userID: String
+    let userID: UInt64
     let username: String
-    // avatar_image.url
+//    let imageURLString: String
+    
     required init(attribute: JSONContainer) {
-        userID = attribute["id"].stringValue
+        userID = attribute["id"].uInt64Value
         username = attribute["username"].stringValue
     }
 }
+

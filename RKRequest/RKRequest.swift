@@ -24,16 +24,18 @@ import UIKit
 import Alamofire
 
 /*
-    This class is just a abstract class, use it by subclassing it.
+    This is just a abstract class, use it by subclassing it.
  */
 public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
     //
+    public typealias RKCompletionHandler = RKResult -> Void
+    //
     public typealias RKResult = Alamofire.Result<TargetType, NSError>
     //
-    public typealias RKCompletionHandler = RKResult -> Void
+    public typealias RKResponse = Alamofire.Response<ResponseType, NSError>
 
     //
-    public var aResponse: Alamofire.Response<ResponseType, NSError>?
+    public var aResponse: RKResponse?
     //
     public var completionHandler: RKCompletionHandler?
     
@@ -44,44 +46,60 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
         super.init(url: url)
     }
     
-    /*
-        Parse the aResponse to the final TargetType or generate a error
-     */
-    public func doParse() -> RKResult {
-        return RKResult.Failure(GetIncorrectRequestTypeError())
-    }
-    
     public override func prepareRequest(requestQueue: RKRequestQueue) {
         //
         self.requestQueue = requestQueue
         //
-        self.aRequest = self.requestQueue?.session.request(method,
-                                                           url,
-                                                           parameters: parameters,
-                                                           encoding: encoding,
-                                                           headers: headers)
+        aRequest = requestQueue.session.request(method,
+                                                url,
+                                                parameters: parameters,
+                                                encoding: encoding,
+                                                headers: headers)
     }
     
     public override func startRequest() {
         //
-        self.aRequest?.resume()
+        aRequest?.resume()
+        //
+        parseResponse()
     }
     
     public override func cancelRequest() {
         //
-        self.aRequest?.cancel()
+        aRequest?.cancel()
+        //
+        deliverResult()
     }
     
-    public override func parseResponse() {
+    /*
+         Parse the response from server
+     */
+    public func parseResponse() {
         // Parse the data from server into ResponseType 
         // ResponseType can be JSON, String, NSData, SwiftyJSON.
     }
     
-    public override func deliverResult() {
+    /*
+         Parse the aResponse to the final TargetType or generate a error
+     */
+    public func parseResult(response: RKResponse) -> RKResult {
+        //
+        return RKResult.Failure(RKError.IncorrectRequestTypeError)
+    }
+    
+    /*
+         Deliver result or error in the main thread
+     */
+    public func deliverResult() {
         //
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             //
-            let result = self.doParse()
+            let result: RKResult
+            if let response = self.aResponse {
+                result = self.parseResult(response)
+            } else {
+                result = RKResult.Failure(RKError.IncorrectRequestTypeError)
+            }
             //
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 //
@@ -90,13 +108,5 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
         }
     }
     
-}
-
-// Error
-private let RKErrorDomain = "cn.rk.request.error.domain"
-
-func GetIncorrectRequestTypeError() -> NSError {
-    let userInfo = [NSLocalizedFailureReasonErrorKey: "Please use a concerate request class"]
-    return NSError(domain: RKErrorDomain, code: 10001, userInfo: userInfo)
 }
 

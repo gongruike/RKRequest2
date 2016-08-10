@@ -41,6 +41,7 @@ public class RKConfiguration {
     }
     
     public class func defaultURLSessionConfiguration() -> NSURLSessionConfiguration {
+        //
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         
         configuration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders

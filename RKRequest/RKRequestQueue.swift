@@ -24,7 +24,9 @@ import UIKit
 import Alamofire
 
 public protocol PluginType {
+    //
     func willSendRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
+    //
     func didFinishedRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
 }
 
@@ -45,19 +47,13 @@ public class RKRequestQueue {
                                          serverTrustPolicyManager: configuration.trustPolicyManager)
         // Important
         self.session.startRequestsImmediately = false
-        
         //
         self.plugins.append(RKNetworkActivityPlugin())
-
     }
     
     public func startRequest(request: RKBaseRequest) {
         //
         request.prepareRequest(self)
-        //
-        request.startRequest()
-        //
-        request.parseResponse()
         //
         request.aRequest?.response(completionHandler: { (_, _, _, _) in
             //
@@ -67,6 +63,8 @@ public class RKRequestQueue {
         plugins.forEach { plugin in
             plugin.willSendRequest(self, request: request)
         }
+        //
+        request.startRequest()
     }
     
     public func finishRequest(request: RKBaseRequest) {

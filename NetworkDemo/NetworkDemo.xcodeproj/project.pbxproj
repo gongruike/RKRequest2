@@ -13,6 +13,7 @@
 		9F4852501CEAB60F0058FFD6 /* RKConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F48524F1CEAB60F0058FFD6 /* RKConfigurationTests.swift */; };
 		9F4852521CEAB62D0058FFD6 /* RKRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4852511CEAB62D0058FFD6 /* RKRequestTests.swift */; };
 		9F4852541CEAB6500058FFD6 /* RKRequestQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4852531CEAB6500058FFD6 /* RKRequestQueueTests.swift */; };
+		9F59D0791D5B198000B461BC /* RKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F59D0781D5B198000B461BC /* RKError.swift */; };
 		9F978A9D1CE71E5F00ED76E2 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */; };
 		9FA69BFC1CDD83910050E97B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69BFB1CDD83910050E97B /* AppDelegate.swift */; };
 		9FA69BFE1CDD83910050E97B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA69BFD1CDD83910050E97B /* ViewController.swift */; };
@@ -72,6 +73,7 @@
 		9F48524F1CEAB60F0058FFD6 /* RKConfigurationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKConfigurationTests.swift; sourceTree = "<group>"; };
 		9F4852511CEAB62D0058FFD6 /* RKRequestTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequestTests.swift; sourceTree = "<group>"; };
 		9F4852531CEAB6500058FFD6 /* RKRequestQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKRequestQueueTests.swift; sourceTree = "<group>"; };
+		9F59D0781D5B198000B461BC /* RKError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKError.swift; sourceTree = "<group>"; };
 		9F978A9C1CE71E5F00ED76E2 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		9FA69BF81CDD83910050E97B /* NetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FA69BFB1CDD83910050E97B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				9F424E901CE972A3000F9369 /* RKConfiguration.swift */,
 				9FE120D31CE6222800329044 /* RKRequestQueue.swift */,
 				9FE120D41CE6222800329044 /* RKTypeRequest.swift */,
+				9F59D0781D5B198000B461BC /* RKError.swift */,
 			);
 			name = RKRequest;
 			path = ../../RKRequest;
@@ -356,6 +359,7 @@
 				9FA69C371CDD84330050E97B /* HTTPClient.swift in Sources */,
 				9FE120DB1CE6222800329044 /* RKTypeRequest.swift in Sources */,
 				9F424E911CE972A3000F9369 /* RKConfiguration.swift in Sources */,
+				9F59D0791D5B198000B461BC /* RKError.swift in Sources */,
 				9FA69BFC1CDD83910050E97B /* AppDelegate.swift in Sources */,
 				9FE120DA1CE6222800329044 /* RKRequestQueue.swift in Sources */,
 				9FE120D71CE6222800329044 /* RKBaseRequest.swift in Sources */,

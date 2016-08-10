@@ -15,15 +15,16 @@ class RKBaseSwiftyJSONRequest<T>: RKRequest<SwiftyJSON.JSON, T> {
         //
         self.requestQueue = requestQueue
         //
-        self.aRequest = self.requestQueue?.session.request(method,
-                                                           finalURL!,
-                                                           parameters: parameters,
-                                                           encoding: encoding,
-                                                           headers: headers)
+        aRequest = requestQueue.session.request(method,
+                                                finalURL!,
+                                                parameters: parameters,
+                                                encoding: encoding,
+                                                headers: headers)
     }
     
     override func parseResponse() {
-        self.aRequest?.responseSwiftyJSON({ response in
+        //
+        aRequest?.responseSwiftyJSON({ response in
             
             self.aResponse = response
             self.deliverResult()
@@ -33,53 +34,64 @@ class RKBaseSwiftyJSONRequest<T>: RKRequest<SwiftyJSON.JSON, T> {
 }
 
 class PostRequest: RKBaseSwiftyJSONRequest<[Post]> {
-    // Custom init
+    //
     init(completionHandler: RKCompletionHandler?) {
         super.init(url: "stream/0/posts/stream/global",
                    completionHandler: completionHandler)
     }
     
-    override func doParse() -> RKResult {
-        if let response = aResponse {
-            switch response.result {
-            case .Success(let value):
-                //
-                let data = value["data"]
-                let posts = data.map { Post(attribute: $1) }
-                
-                return RKResult.Success(posts)
-            case .Failure(let error):
-                return RKResult.Failure(error)
-            }
-        } else {
-            return RKResult.Failure(GetIncorrectRequestTypeError())
+    override func parseResult(response: RKResponse) -> RKResult {
+        //
+        switch response.result {
+        case .Success(let value):
+            //
+            let data = value["data"]
+            let posts = data.map { Post(attribute: $1) }
+            return RKResult.Success(posts)
+        case .Failure(let error):
+            return RKResult.Failure(error)
         }
     }
+    
 }
+
+class BaseListRequest<T>: RKBaseSwiftyJSONRequest<T> {
+    
+    let page: Int
+    
+    let count: Int
+    
+    init(page: Int,
+         count: Int,
+         url: Alamofire.URLStringConvertible,
+         completionHandler: RKCompletionHandler?) {
+        //
+        self.page = page
+        self.count = count
+        //
+        super.init(url: url, completionHandler: completionHandler)
+    }
+    
+}
+
 
 class AvartarRequest: RKRequest<NSData, (NSIndexPath, UIImage)> {
     
     let indexPath: NSIndexPath
     
-    init(indexPath: NSIndexPath, url: Alamofire.URLStringConvertible, completionHandler: RKCompletionHandler?) {
+    init(indexPath: NSIndexPath,
+         url: Alamofire.URLStringConvertible,
+         completionHandler: RKCompletionHandler?) {
+        //
         self.indexPath = indexPath
         super.init(url: url, completionHandler: completionHandler)
     }
     
     override func parseResponse() {
-        self.aRequest?.responseData(completionHandler: { response in
+        aRequest?.responseData(completionHandler: { response in
             self.aResponse = response
             self.deliverResult()
         })
     }
     
-    override func doParse() -> RKResult {
-        return RKResult.Failure(GetIncorrectRequestTypeError())
-    }
-    
 }
-
-
-
-
-

@@ -24,11 +24,9 @@ import Foundation
 import Alamofire
 
 /*
-     In Swift, collection types like Array or Set can't hold the instancs of a generic class
+     In Swift, collection types like Array or Set can't hold the instancs of a generic class without a concerate type
  */
 public class RKBaseRequest: Hashable {
-    
-    public let tag: Int = random()
     
     public var url: Alamofire.URLStringConvertible
     
@@ -64,24 +62,11 @@ public class RKBaseRequest: Hashable {
     public func cancelRequest() {}
     
     /*
-        Parse the response from server
-     */
-    public func parseResponse() {}
-    
-    /*
-        Deliver result or error in the main thread
-     */
-    public func deliverResult() {}
-    
-    /*
         HashValue
-        TBD
      */
-    public var hashValue: Int { return url.URLString.hashValue + method.rawValue.hashValue + tag.hashValue }
+    public var hashValue: Int { return url.URLString.hashValue ^ method.rawValue.hashValue }
 }
 
 public func ==(lhs: RKBaseRequest, rhs: RKBaseRequest) -> Bool {
     return lhs.hashValue == rhs.hashValue
 }
-
-

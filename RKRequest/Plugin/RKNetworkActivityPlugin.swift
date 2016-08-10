@@ -29,16 +29,13 @@ class RKNetworkActivityPlugin: PluginType {
     
     func increment() {
         requestCount += 1
-        if requestCount > 0 {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        }
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = (requestCount > 0)
+
     }
     
     func decrement() {
         requestCount -= 1
-        if requestCount == 0 {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        }
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = (requestCount != 0)
     }
     
     //

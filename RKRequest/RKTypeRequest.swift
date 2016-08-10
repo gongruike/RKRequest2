@@ -24,12 +24,19 @@
 import UIKit
 import Alamofire
 
-// 为什么子类查不到父类的init的方法呢？是因为泛型的原因吗？
+// 为什么子类查不到父类的init的方法呢？必须override才可以，难道是因为泛型的原因吗？
 
 /*
     字符串请求
  */
 public class RKStringRequest<T>: RKRequest<String, T> {
+    
+    override init(url: Alamofire.URLStringConvertible,
+                  completionHandler: RKCompletionHandler?) {
+        //
+        super.init(url: url,
+                   completionHandler: completionHandler)
+    }
     
     public override func parseResponse() {
         aRequest?.responseString(completionHandler: { response -> Void in
@@ -46,6 +53,13 @@ public class RKStringRequest<T>: RKRequest<String, T> {
  */
 public class RKDataRequest<T>: RKRequest<NSData, T> {
     
+    override init(url: Alamofire.URLStringConvertible,
+                  completionHandler: RKCompletionHandler?) {
+        //
+        super.init(url: url,
+                   completionHandler: completionHandler)
+    }
+    
     public override func parseResponse() {
         aRequest?.responseData(completionHandler: { response in
             
@@ -60,6 +74,13 @@ public class RKDataRequest<T>: RKRequest<NSData, T> {
     普通JSON请求
  */
 public class RKJSONRequest<T>: RKRequest<AnyObject, T> {
+    
+    override init(url: Alamofire.URLStringConvertible,
+                  completionHandler: RKCompletionHandler?) {
+        //
+        super.init(url: url,
+                   completionHandler: completionHandler)
+    }
     
     override public func parseResponse() {
         aRequest?.responseJSON(completionHandler: { response -> Void in

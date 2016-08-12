@@ -24,7 +24,7 @@ import Foundation
 import Alamofire
 
 /*
-     In Swift, collection types like Array or Set can't hold the instancs of a generic class without a concerate type
+    This is the base request class.
  */
 public class RKBaseRequest: Hashable {
     
@@ -52,7 +52,7 @@ public class RKBaseRequest: Hashable {
     public func prepareRequest(requestQueue: RKRequestQueue) {}
     
     /*
-        Start request and must call prepareRequest(_) before startRequest()
+        Must call prepareRequest(_) before startRequest()
      */
     public func startRequest() {}
     
@@ -65,6 +65,7 @@ public class RKBaseRequest: Hashable {
         HashValue
      */
     public var hashValue: Int { return url.URLString.hashValue ^ method.rawValue.hashValue }
+    
 }
 
 public func ==(lhs: RKBaseRequest, rhs: RKBaseRequest) -> Bool {

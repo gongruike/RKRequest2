@@ -24,7 +24,7 @@ import UIKit
 import Alamofire
 
 /*
-    This is just a abstract class, use it by subclassing it.
+    This is a abstract generic class, use by subclassing it.
  */
 public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
     //
@@ -36,7 +36,8 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
 
     //
     public var aResponse: RKResponse?
-    //
+    
+    // Always in the main thread
     public var completionHandler: RKCompletionHandler?
     
     public init(url: Alamofire.URLStringConvertible, completionHandler: RKCompletionHandler?) {
@@ -50,18 +51,20 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
         //
         self.requestQueue = requestQueue
         //
+        let finalURL = NSURL(string: url.URLString, relativeToURL: requestQueue.configuration.baseURL)
+        //
         aRequest = requestQueue.session.request(method,
-                                                url,
+                                                finalURL!,
                                                 parameters: parameters,
                                                 encoding: encoding,
                                                 headers: headers)
     }
     
     public override func startRequest() {
-        //
+        // How to check if aRequest is nil?
         aRequest?.resume()
         //
-        parseResponse()
+        parseData()
     }
     
     public override func cancelRequest() {
@@ -72,17 +75,15 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
     }
     
     /*
-         Parse the response from server
+        Parse the data from server into ResponseType，
+        ResponseType can be JSON, String, NSData, SwiftyJSON.
      */
-    public func parseResponse() {
-        // Parse the data from server into ResponseType 
-        // ResponseType can be JSON, String, NSData, SwiftyJSON.
-    }
+    public func parseData() {}
     
     /*
-         Parse the aResponse to the final TargetType or generate a error
+        Parse the aResponse to the final TargetType or generate a error
      */
-    public func parseResult(response: RKResponse) -> RKResult {
+    public func parseResponse(response: RKResponse) -> RKResult {
         //
         return RKResult.Failure(RKError.IncorrectRequestTypeError)
     }
@@ -96,9 +97,9 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
             //
             let result: RKResult
             if let response = self.aResponse {
-                result = self.parseResult(response)
+                result = self.parseResponse(response)
             } else {
-                result = RKResult.Failure(RKError.IncorrectRequestTypeError)
+                result = RKResult.Failure(RKError.EmptyResponseError)
             }
             //
             dispatch_async(dispatch_get_main_queue()) { () -> Void in

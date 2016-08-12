@@ -25,17 +25,17 @@ import Alamofire
 
 public class RKConfiguration {
 
-    public let baseURL: NSURL
+    public var baseURL: NSURL?
     
     public let configuration: NSURLSessionConfiguration
     
     public let trustPolicyManager: Alamofire.ServerTrustPolicyManager?
     
-    public init(baseURLString: String,
+    public init(baseURL: NSURL?,
                 configuration: NSURLSessionConfiguration = RKConfiguration.defaultURLSessionConfiguration(),
                 trustPolicyManager: Alamofire.ServerTrustPolicyManager? = nil) {
         //
-        self.baseURL = NSURL(string: baseURLString)!
+        self.baseURL = baseURL
         self.configuration = configuration
         self.trustPolicyManager = trustPolicyManager
     }

@@ -13,12 +13,18 @@ public class RKError {
     public static let RKErrorDomain = "cn.rk.request.error.domain"
 
     public static let IncorrectRequestTypeError: NSError = {
-        let userInfo = [NSLocalizedFailureReasonErrorKey: "Incorrect request type, Please use a concerate request class"]
+        //
+        let userInfo = [
+            NSLocalizedFailureReasonErrorKey: "Incorrect request type, please use a legal request type"
+        ]
         return NSError(domain: RKErrorDomain, code: 10001, userInfo: userInfo)
     }()
     
     public static let EmptyResponseError: NSError = {
-        let userInfo = [NSLocalizedFailureReasonErrorKey: "Empty response"]
+        //
+        let userInfo = [
+            NSLocalizedFailureReasonErrorKey: "Empty response"
+        ]
         return NSError(domain: RKErrorDomain, code: 10002, userInfo: userInfo)
     }()
     

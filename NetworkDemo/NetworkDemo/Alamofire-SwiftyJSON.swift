@@ -45,7 +45,6 @@ extension Request {
             }
             
             return .Success(JSON)
-
         }
     }
 }

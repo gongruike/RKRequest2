@@ -24,10 +24,8 @@
 import UIKit
 import Alamofire
 
-// 为什么子类查不到父类的init的方法呢？必须override才可以，难道是因为泛型的原因吗？
-
 /*
-    字符串请求
+    Take advantages of Alamofire
  */
 public class RKStringRequest<T>: RKRequest<String, T> {
     
@@ -38,9 +36,10 @@ public class RKStringRequest<T>: RKRequest<String, T> {
                    completionHandler: completionHandler)
     }
     
-    public override func parseResponse() {
+    public override func parseData() {
+        //
         aRequest?.responseString(completionHandler: { response -> Void in
-            
+            //
             self.aResponse = response
             self.deliverResult()
         })
@@ -48,9 +47,6 @@ public class RKStringRequest<T>: RKRequest<String, T> {
     
 }
 
-/*
-    NSData请求
- */
 public class RKDataRequest<T>: RKRequest<NSData, T> {
     
     override init(url: Alamofire.URLStringConvertible,
@@ -60,9 +56,10 @@ public class RKDataRequest<T>: RKRequest<NSData, T> {
                    completionHandler: completionHandler)
     }
     
-    public override func parseResponse() {
+    public override func parseData() {
+        //
         aRequest?.responseData(completionHandler: { response in
-            
+            //
             self.aResponse = response
             self.deliverResult()
         })
@@ -70,9 +67,6 @@ public class RKDataRequest<T>: RKRequest<NSData, T> {
 
 }
 
-/*
-    普通JSON请求
- */
 public class RKJSONRequest<T>: RKRequest<AnyObject, T> {
     
     override init(url: Alamofire.URLStringConvertible,
@@ -82,12 +76,12 @@ public class RKJSONRequest<T>: RKRequest<AnyObject, T> {
                    completionHandler: completionHandler)
     }
     
-    override public func parseResponse() {
+    override public func parseData() {
+        //
         aRequest?.responseJSON(completionHandler: { response -> Void in
-            
+            //
             self.aResponse = response
             self.deliverResult()
         })
     }    
 }
-

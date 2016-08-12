@@ -5,24 +5,13 @@ import Alamofire
 
 class RKBaseSwiftyJSONRequest<T>: RKRequest<SwiftyJSON.JSON, T> {
     
-    override init(url: Alamofire.URLStringConvertible, completionHandler: RKCompletionHandler?) {
+    override init(url: Alamofire.URLStringConvertible,
+                  completionHandler: RKCompletionHandler?) {
+        //
         super.init(url: url, completionHandler: completionHandler)
     }
     
-    override func prepareRequest(requestQueue: RKRequestQueue) {
-        //
-        let finalURL = NSURL(string: url.URLString, relativeToURL: requestQueue.configuration.baseURL)
-        //
-        self.requestQueue = requestQueue
-        //
-        aRequest = requestQueue.session.request(method,
-                                                finalURL!,
-                                                parameters: parameters,
-                                                encoding: encoding,
-                                                headers: headers)
-    }
-    
-    override func parseResponse() {
+    override func parseData() {
         //
         aRequest?.responseSwiftyJSON({ response in
             
@@ -40,7 +29,7 @@ class PostRequest: RKBaseSwiftyJSONRequest<[Post]> {
                    completionHandler: completionHandler)
     }
     
-    override func parseResult(response: RKResponse) -> RKResult {
+    override func parseResponse(response: RKResponse) -> RKResult {
         //
         switch response.result {
         case .Success(let value):
@@ -55,43 +44,29 @@ class PostRequest: RKBaseSwiftyJSONRequest<[Post]> {
     
 }
 
-class BaseListRequest<T>: RKBaseSwiftyJSONRequest<T> {
+struct PageListResult<T> {
+    //
+    let hasMore: Bool
+    //
+    let list: [T]
+}
+
+class BasePageListRequest<T>: RKBaseSwiftyJSONRequest<T> {
     
-    let page: Int
+    let pageNumber: Int
     
-    let count: Int
+    let pagecCount: Int
     
-    init(page: Int,
-         count: Int,
+    init(pageNumber: Int,
+         pagecCount: Int,
          url: Alamofire.URLStringConvertible,
          completionHandler: RKCompletionHandler?) {
         //
-        self.page = page
-        self.count = count
+        self.pageNumber = pageNumber
+        self.pagecCount = pagecCount
         //
         super.init(url: url, completionHandler: completionHandler)
     }
     
 }
 
-
-class AvartarRequest: RKRequest<NSData, (NSIndexPath, UIImage)> {
-    
-    let indexPath: NSIndexPath
-    
-    init(indexPath: NSIndexPath,
-         url: Alamofire.URLStringConvertible,
-         completionHandler: RKCompletionHandler?) {
-        //
-        self.indexPath = indexPath
-        super.init(url: url, completionHandler: completionHandler)
-    }
-    
-    override func parseResponse() {
-        aRequest?.responseData(completionHandler: { response in
-            self.aResponse = response
-            self.deliverResult()
-        })
-    }
-    
-}

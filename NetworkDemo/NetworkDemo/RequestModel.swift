@@ -33,7 +33,6 @@ class PostRequest: RKBaseSwiftyJSONRequest<[Post]> {
         //
         switch response.result {
         case .Success(let value):
-            //
             let data = value["data"]
             let posts = data.map { Post(attribute: $1) }
             return RKResult.Success(posts)

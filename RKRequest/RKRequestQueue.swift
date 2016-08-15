@@ -38,6 +38,12 @@ public class RKRequestQueue {
     //
     public var plugins: [PluginType] = []
     //
+    public var enableLog: Bool = true
+    //
+    public var waitingRequest: [RKBaseRequest] = []
+    //
+    public var activeRequestCount: Int = 0
+    
     public init(configuration: RKConfiguration) {
         
         self.configuration = configuration
@@ -65,6 +71,17 @@ public class RKRequestQueue {
         }
         //
         request.startRequest()
+        
+        activeRequestCount += 1
+    }
+    
+    func enqueueRequest(request: RKBaseRequest) {
+        //
+    }
+    
+    func dequeueRequest() -> RKBaseRequest? {
+        //
+        return nil
     }
     
     public func finishRequest(request: RKBaseRequest) {
@@ -72,6 +89,8 @@ public class RKRequestQueue {
         plugins.forEach { plugin in
             plugin.didFinishedRequest(self, request: request)
         }
+        
+        activeRequestCount -= 1
     }
     
 }

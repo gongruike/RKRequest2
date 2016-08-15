@@ -61,8 +61,12 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
     }
     
     public override func startRequest() {
-        // How to check if aRequest is nil?
-        aRequest?.resume()
+        //
+        guard let aRequest = aRequest else {
+            fatalError("aRequest can't be nik, must call prepareRequest(_) before")
+        }
+        //
+        aRequest.resume()
         //
         parseData()
     }
@@ -70,6 +74,8 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
     public override func cancelRequest() {
         //
         aRequest?.cancel()
+        //
+        requestQueue?.finishRequest(self)
         //
         deliverResult()
     }

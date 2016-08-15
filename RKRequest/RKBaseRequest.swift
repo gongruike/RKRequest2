@@ -38,6 +38,10 @@ public class RKBaseRequest: Hashable {
     
     public var encoding: Alamofire.ParameterEncoding = .URL
     
+    public var acceptableStatusCodes: Range<Int> = 200..<300
+    
+    public var acceptableContentTypes: [String] = ["*/*"]
+        
     public var requestQueue: RKRequestQueue?
     
     public var aRequest: Alamofire.Request?

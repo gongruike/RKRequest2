@@ -63,5 +63,6 @@ parseResponse方法则负责将parseData得到的数据进一步解析成一个P
 
 
 
-## Thanks to the coders of Alamofire & SwiftyJSON
+
+### Standing on the shoulder of giants
 

@@ -28,16 +28,15 @@ import Alamofire
  */
 public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
     //
-    public typealias RKCompletionHandler = RKResult -> Void
-    //
     public typealias RKResult = Alamofire.Result<TargetType, NSError>
     //
     public typealias RKResponse = Alamofire.Response<ResponseType, NSError>
-
+    //
+    public typealias RKCompletionHandler = RKResult -> Void
+    
     //
     public var aResponse: RKResponse?
-    
-    // Always in the main thread
+    //
     public var completionHandler: RKCompletionHandler?
     
     public init(url: Alamofire.URLStringConvertible, completionHandler: RKCompletionHandler?) {
@@ -47,57 +46,52 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
         super.init(url: url)
     }
     
-    public override func prepareRequest(requestQueue: RKRequestQueue) {
+    public override func start() {
         //
-        self.requestQueue = requestQueue
-        //
-        let finalURL = NSURL(string: url.URLString, relativeToURL: requestQueue.configuration.baseURL)
-        //
-        aRequest = requestQueue.session.request(method,
-                                                finalURL!,
-                                                parameters: parameters,
-                                                encoding: encoding,
-                                                headers: headers)
-    }
-    
-    public override func startRequest() {
-        //
-        guard let aRequest = aRequest else {
-            fatalError("aRequest can't be nik, must call prepareRequest(_) before")
-        }
-        //
-        aRequest.resume()
+        super.start()
         //
         parseData()
     }
     
-    public override func cancelRequest() {
+    public override func cancel() {
         //
-        aRequest?.cancel()
-        //
-        requestQueue?.finishRequest(self)
+        super.cancel()
         //
         deliverResult()
+    }
+    
+    /*
+        CustomStringConvertible
+     */
+    public override var description: String {
+        return aResponse?.description ?? aRequest?.description ?? url.URLString
+    }
+    
+    /*
+        CustomDebugStringConvertible
+     */
+    public override var debugDescription: String {
+        return aResponse?.debugDescription ?? aRequest.debugDescription ?? url.URLString
     }
     
     /*
         Parse the data from server into ResponseType，
         ResponseType can be JSON, String, NSData, SwiftyJSON.
      */
-    public func parseData() {}
+    internal func parseData() {}
     
     /*
         Parse the aResponse to the final TargetType or generate a error
      */
-    public func parseResponse(response: RKResponse) -> RKResult {
+    internal func parseResponse(response: RKResponse) -> RKResult {
         //
         return RKResult.Failure(RKError.IncorrectRequestTypeError)
     }
     
     /*
-         Deliver result or error in the main thread
+        Deliver result or error in the main thread
      */
-    public func deliverResult() {
+    internal func deliverResult() {
         //
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             //

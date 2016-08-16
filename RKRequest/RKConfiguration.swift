@@ -23,20 +23,9 @@
 import UIKit
 import Alamofire
 
-public enum Prioritization {
-    // First in, first out, like queue
-    case FIFO
-    // Last in, first out, like stack
-    case LIFO
-}
-
 public class RKConfiguration {
 
     public var baseURL: NSURL?
-    // Default is 3
-    public let maximumActiveRequestCount: Int
-    // Default is FIFO
-    public let prioritization: Prioritization
     //
     public let configuration: NSURLSessionConfiguration
     //
@@ -44,13 +33,10 @@ public class RKConfiguration {
     
     public init(baseURL: NSURL?,
                 maximumActiveRequestCount: Int = 3,
-                prioritization: Prioritization = .FIFO,
                 configuration: NSURLSessionConfiguration = RKConfiguration.defaultURLSessionConfiguration(),
                 trustPolicyManager: Alamofire.ServerTrustPolicyManager? = nil) {
         //
         self.baseURL = baseURL
-        self.maximumActiveRequestCount = maximumActiveRequestCount
-        self.prioritization = prioritization
         self.configuration = configuration
         self.trustPolicyManager = trustPolicyManager
     }
@@ -73,7 +59,12 @@ public class RKConfiguration {
     }
     
     public class func defaultURLCache() -> NSURLCache {
-        return NSURLCache()
+        //
+        return NSURLCache(
+            memoryCapacity: 20 * 1024 * 1024, // 20 MB
+            diskCapacity: 150 * 1024 * 1024,  // 150 MB
+            diskPath: "cn.rk.request.url.cache"
+        )
     }
     
 }

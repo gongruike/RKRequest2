@@ -51,7 +51,7 @@ class RKNetworkActivityPlugin: PluginType {
         increment()
     }
     
-    func didFinishedRequest(requestQueue: RKRequestQueue, request: RKBaseRequest) {
+    func didFinishRequest(requestQueue: RKRequestQueue, request: RKBaseRequest) {
         decrement()
     }
 }

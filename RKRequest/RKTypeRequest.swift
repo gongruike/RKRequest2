@@ -83,5 +83,6 @@ public class RKJSONRequest<T>: RKRequest<AnyObject, T> {
             self.aResponse = response
             self.deliverResult()
         })
-    }    
+    }
+    
 }

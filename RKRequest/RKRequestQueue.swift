@@ -27,7 +27,7 @@ public protocol PluginType {
     //
     func willSendRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
     //
-    func didFinishedRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
+    func didFinishRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
 }
 
 public class RKRequestQueue {
@@ -37,12 +37,6 @@ public class RKRequestQueue {
     public let configuration: RKConfiguration
     //
     public var plugins: [PluginType] = []
-    //
-    public var enableLog: Bool = true
-    //
-    public var waitingRequest: [RKBaseRequest] = []
-    //
-    public var activeRequestCount: Int = 0
     
     public init(configuration: RKConfiguration) {
         
@@ -61,36 +55,26 @@ public class RKRequestQueue {
         //
         request.prepareRequest(self)
         //
-        request.aRequest?.response(completionHandler: { (_, _, _, _) in
+        request.validate()
+        //
+        request.start()
+    }
+    
+    public func sendRequest(request: RKBaseRequest) {
+        //
+        dispatch_async(dispatch_get_main_queue()) {
             //
-            self.finishRequest(request)
-        })
-        //
-        plugins.forEach { plugin in
-            plugin.willSendRequest(self, request: request)
+            self.plugins.forEach { plugin in
+                plugin.willSendRequest(self, request: request)
+            }
         }
-        //
-        request.startRequest()
-        
-        activeRequestCount += 1
-    }
-    
-    func enqueueRequest(request: RKBaseRequest) {
-        //
-    }
-    
-    func dequeueRequest() -> RKBaseRequest? {
-        //
-        return nil
     }
     
     public func finishRequest(request: RKBaseRequest) {
         //
         plugins.forEach { plugin in
-            plugin.didFinishedRequest(self, request: request)
-        }
-        
-        activeRequestCount -= 1
+            plugin.didFinishRequest(self, request: request)
+        }        
     }
     
 }

@@ -15,7 +15,7 @@ public class RKError {
     public static let IncorrectRequestTypeError: NSError = {
         //
         let userInfo = [
-            NSLocalizedFailureReasonErrorKey: "Incorrect request type, please use a legal request type"
+            NSLocalizedFailureReasonErrorKey: "Incorrect request type, please use a valid request type"
         ]
         return NSError(domain: RKErrorDomain, code: 10001, userInfo: userInfo)
     }()

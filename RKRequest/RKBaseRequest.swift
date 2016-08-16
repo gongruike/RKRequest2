@@ -26,9 +26,9 @@ import Alamofire
 /*
     This is the base request class.
  */
-public class RKBaseRequest: Hashable {
+public class RKBaseRequest: Hashable, CustomStringConvertible, CustomDebugStringConvertible {
     
-    public var url: Alamofire.URLStringConvertible
+    public let url: Alamofire.URLStringConvertible
     
     public var method: Alamofire.Method = .GET
     
@@ -53,22 +53,95 @@ public class RKBaseRequest: Hashable {
     /*
         Bind requestQueue & Generate aRequest
      */
-    public func prepareRequest(requestQueue: RKRequestQueue) {}
+    public func prepareRequest(requestQueue: RKRequestQueue) {
+        //
+        self.requestQueue = requestQueue
+        //
+        let finalURL = NSURL(string: url.URLString, relativeToURL: requestQueue.configuration.baseURL)
+        //
+        aRequest = requestQueue.session.request(method,
+                                                finalURL!,
+                                                parameters: parameters,
+                                                encoding: encoding,
+                                                headers: headers)
+    }
     
     /*
         Must call prepareRequest(_) before startRequest()
      */
-    public func startRequest() {}
+    public func start() {
+        //
+        guard let aRequest = aRequest else {
+            fatalError("aRequest can't be nil, must call prepareRequest(_) before")
+        }
+        //
+        aRequest.resume()
+        //
+        onStart()
+    }
     
     /*
         Cancel request
      */
-    public func cancelRequest() {}
+    public func cancel() {
+        //
+        guard let aRequest = aRequest else {
+            fatalError("aRequest can't be nil, must call prepareRequest(_) before")
+        }
+        //
+        aRequest.cancel()
+        //
+        onFinish()
+    }
+    
+    /*
+        Validate
+     */
+    public func validate() {
+        //
+        guard let aRequest = aRequest else {
+            fatalError("aRequest can't be nil, must call prepareRequest(_) before")
+        }
+        //
+        aRequest.validate(statusCode: acceptableStatusCodes).validate(contentType: acceptableContentTypes)
+    }
+    
+    /*
+     
+     */
+    func onStart() {
+        //
+        requestQueue?.sendRequest(self)
+    }
+    
+    /*
+     
+     */
+    func onFinish() {
+        //
+        requestQueue?.finishRequest(self)
+    }
     
     /*
         HashValue
      */
-    public var hashValue: Int { return url.URLString.hashValue ^ method.rawValue.hashValue }
+    public var hashValue: Int {
+        return url.URLString.hashValue ^ method.rawValue.hashValue
+    }
+    
+    /*
+        CustomStringConvertible
+     */
+    public var description: String {
+        return aRequest?.description ?? url.URLString
+    }
+    
+    /*
+        CustomDebugStringConvertible
+     */
+    public var debugDescription: String {
+        return aRequest?.debugDescription ?? url.URLString
+    }
     
 }
 

@@ -23,25 +23,36 @@
 import UIKit
 import Alamofire
 
-public protocol PluginType {
+public protocol RKPluginType {
     //
     func willSendRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
     //
     func didFinishRequest(requestQueue: RKRequestQueue, request: RKBaseRequest)
 }
 
-public class RKRequestQueue {
+public protocol RKRequestQueueType {
+    //
+    var configuration: RKConfiguration { get }
+    //
+    func generateAlamofireRequest(request: RKBaseRequest) -> Alamofire.Request
+    //
+    func onSendRequest(request: RKBaseRequest)
+    //
+    func onFinishRequest(request: RKBaseRequest)
+}
+
+public class RKRequestQueue: RKRequestQueueType {
     //
     public let session: Alamofire.Manager
     //
     public let configuration: RKConfiguration
     //
-    public var plugins: [PluginType] = []
+    public var plugins: [RKPluginType] = []
     
     public init(configuration: RKConfiguration) {
-        
+        //
         self.configuration = configuration
-        
+        //
         self.session = Alamofire.Manager(configuration: configuration.configuration,
                                          delegate: Alamofire.Manager.SessionDelegate(),
                                          serverTrustPolicyManager: configuration.trustPolicyManager)
@@ -60,21 +71,38 @@ public class RKRequestQueue {
         request.start()
     }
     
-    public func sendRequest(request: RKBaseRequest) {
+    //
+    public func generateAlamofireRequest(request: RKBaseRequest) -> Alamofire.Request {
+        //
+        return session.request(request.method,
+                               request.url,
+                               parameters: request.parameters,
+                               encoding: request.encoding,
+                               headers: request.headers)
+    }
+    
+    //
+    public func onSendRequest(request: RKBaseRequest) {
         //
         dispatch_async(dispatch_get_main_queue()) {
             //
             self.plugins.forEach { plugin in
+                //
                 plugin.willSendRequest(self, request: request)
             }
         }
     }
     
-    public func finishRequest(request: RKBaseRequest) {
+    //
+    public func onFinishRequest(request: RKBaseRequest) {
         //
-        plugins.forEach { plugin in
-            plugin.didFinishRequest(self, request: request)
-        }        
+        dispatch_async(dispatch_get_main_queue()) {
+            //
+            self.plugins.forEach { plugin in
+                //
+                plugin.didFinishRequest(self, request: request)
+            }
+        }
     }
     
 }

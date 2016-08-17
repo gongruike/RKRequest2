@@ -14,8 +14,9 @@ class RKBaseSwiftyJSONRequest<T>: RKRequest<SwiftyJSON.JSON, T> {
     override func parseData() {
         //
         aRequest?.responseSwiftyJSON({ response in
-            
+            //
             self.aResponse = response
+            //
             self.deliverResult()
         })
     }

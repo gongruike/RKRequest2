@@ -23,7 +23,7 @@
 import Foundation
 import UIKit
 
-class RKNetworkActivityPlugin: PluginType {
+class RKNetworkActivityPlugin: RKPluginType {
     
     var requestCount: Int = 0
     

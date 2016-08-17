@@ -32,7 +32,6 @@ public class RKConfiguration {
     public let trustPolicyManager: Alamofire.ServerTrustPolicyManager?
     
     public init(baseURL: NSURL?,
-                maximumActiveRequestCount: Int = 3,
                 configuration: NSURLSessionConfiguration = RKConfiguration.defaultURLSessionConfiguration(),
                 trustPolicyManager: Alamofire.ServerTrustPolicyManager? = nil) {
         //

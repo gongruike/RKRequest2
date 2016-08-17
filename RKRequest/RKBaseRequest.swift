@@ -28,7 +28,7 @@ import Alamofire
  */
 public class RKBaseRequest: Hashable, CustomStringConvertible, CustomDebugStringConvertible {
     
-    public let url: Alamofire.URLStringConvertible
+    public var url: Alamofire.URLStringConvertible
     
     public var method: Alamofire.Method = .GET
     
@@ -42,7 +42,7 @@ public class RKBaseRequest: Hashable, CustomStringConvertible, CustomDebugString
     
     public var acceptableContentTypes: [String] = ["*/*"]
         
-    public var requestQueue: RKRequestQueue?
+    public var requestQueue: RKRequestQueueType?
     
     public var aRequest: Alamofire.Request?
     
@@ -53,17 +53,13 @@ public class RKBaseRequest: Hashable, CustomStringConvertible, CustomDebugString
     /*
         Bind requestQueue & Generate aRequest
      */
-    public func prepareRequest(requestQueue: RKRequestQueue) {
+    public func prepareRequest(requestQueue: RKRequestQueueType) {
         //
         self.requestQueue = requestQueue
         //
-        let finalURL = NSURL(string: url.URLString, relativeToURL: requestQueue.configuration.baseURL)
+        url = NSURL(string: url.URLString, relativeToURL: requestQueue.configuration.baseURL)!
         //
-        aRequest = requestQueue.session.request(method,
-                                                finalURL!,
-                                                parameters: parameters,
-                                                encoding: encoding,
-                                                headers: headers)
+        aRequest = requestQueue.generateAlamofireRequest(self)
     }
     
     /*
@@ -71,13 +67,9 @@ public class RKBaseRequest: Hashable, CustomStringConvertible, CustomDebugString
      */
     public func start() {
         //
-        guard let aRequest = aRequest else {
-            fatalError("aRequest can't be nil, must call prepareRequest(_) before")
-        }
+        aRequest?.resume()
         //
-        aRequest.resume()
-        //
-        onStart()
+        requestQueue?.onSendRequest(self)
     }
     
     /*
@@ -85,47 +77,22 @@ public class RKBaseRequest: Hashable, CustomStringConvertible, CustomDebugString
      */
     public func cancel() {
         //
-        guard let aRequest = aRequest else {
-            fatalError("aRequest can't be nil, must call prepareRequest(_) before")
-        }
-        //
-        aRequest.cancel()
-        //
-        onFinish()
+        aRequest?.cancel()
     }
     
     /*
-        Validate
+        Validate response
      */
     public func validate() {
         //
-        guard let aRequest = aRequest else {
-            fatalError("aRequest can't be nil, must call prepareRequest(_) before")
-        }
-        //
-        aRequest.validate(statusCode: acceptableStatusCodes).validate(contentType: acceptableContentTypes)
-    }
-    
-    /*
-     
-     */
-    func onStart() {
-        //
-        requestQueue?.sendRequest(self)
-    }
-    
-    /*
-     
-     */
-    func onFinish() {
-        //
-        requestQueue?.finishRequest(self)
+        aRequest?.validate(statusCode: acceptableStatusCodes).validate(contentType: acceptableContentTypes)
     }
     
     /*
         HashValue
      */
     public var hashValue: Int {
+        //
         return url.URLString.hashValue ^ method.rawValue.hashValue
     }
     
@@ -133,6 +100,7 @@ public class RKBaseRequest: Hashable, CustomStringConvertible, CustomDebugString
         CustomStringConvertible
      */
     public var description: String {
+        //
         return aRequest?.description ?? url.URLString
     }
     
@@ -140,6 +108,7 @@ public class RKBaseRequest: Hashable, CustomStringConvertible, CustomDebugString
         CustomDebugStringConvertible
      */
     public var debugDescription: String {
+        //
         return aRequest?.debugDescription ?? url.URLString
     }
     

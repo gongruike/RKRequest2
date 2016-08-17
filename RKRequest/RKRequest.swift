@@ -64,6 +64,7 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
         CustomStringConvertible
      */
     public override var description: String {
+        //
         return aResponse?.description ?? aRequest?.description ?? url.URLString
     }
     
@@ -71,6 +72,7 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
         CustomDebugStringConvertible
      */
     public override var debugDescription: String {
+        //
         return aResponse?.debugDescription ?? aRequest.debugDescription ?? url.URLString
     }
     
@@ -105,6 +107,8 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 //
                 self.completionHandler?(result)
+                //
+                self.requestQueue?.onFinishRequest(self)
             }
         }
     }

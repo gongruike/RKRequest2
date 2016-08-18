@@ -41,13 +41,22 @@ public protocol RKRequestQueueType {
     func onFinishRequest(request: RKBaseRequest)
 }
 
-public class RKRequestQueue: RKRequestQueueType {
+public final class RKRequestQueue {
     //
     public let session: Alamofire.Manager
     //
     public let configuration: RKConfiguration
     //
     public var plugins: [RKPluginType] = []
+    //
+    private var activeRequestCount: Int = 0
+    //
+    private var queuedRequests: [RKBaseRequest] = []
+    //
+    private let synchronizationQueue: dispatch_queue_t = {
+        let name = String(format: "cn.rk.request.synchronization.queue-%08%08", arc4random(), arc4random())
+        return dispatch_queue_create(name, DISPATCH_QUEUE_SERIAL)
+    }()
     
     public init(configuration: RKConfiguration) {
         //
@@ -62,15 +71,70 @@ public class RKRequestQueue: RKRequestQueueType {
         self.plugins.append(RKNetworkActivityPlugin())
     }
     
-    public func startRequest(request: RKBaseRequest) {
+    public func addRequest(request: RKBaseRequest) {
+        //
+        dispatch_async(synchronizationQueue) {
+            //
+            if self.isActiveRequestCountBelowMaximumLimit() {
+                //
+                self.startRequest(request)
+            } else {
+                //
+                self.enqueueRequest(request)
+            }
+        }
+    }
+    
+    private func startRequest(request: RKBaseRequest) {
         //
         request.prepareRequest(self)
         //
         request.validate()
         //
         request.start()
+        //
+        self.activeRequestCount += 1
     }
     
+    private func startNextRequest() {
+        //
+        guard isActiveRequestCountBelowMaximumLimit() else { return }
+        //
+        if let request = dequeueRequest() {
+            //
+            startRequest(request)
+        }
+    }
+    
+    private func enqueueRequest(request: RKBaseRequest) {
+        //
+        switch configuration.prioritization {
+        case .FIFO:
+            queuedRequests.append(request)
+        case .LIFO:
+            queuedRequests.insert(request, atIndex: 0)
+        }
+    }
+    
+    private func dequeueRequest() -> RKBaseRequest? {
+        //
+        var request: RKBaseRequest?
+        //
+        if !queuedRequests.isEmpty {
+            request = queuedRequests.removeFirst()
+        }
+        //
+        return request
+    }
+    
+    private func isActiveRequestCountBelowMaximumLimit() -> Bool {
+        //
+        return activeRequestCount < configuration.maximumActiveRequestCount
+    }
+    
+}
+
+extension RKRequestQueue: RKRequestQueueType {
     //
     public func generateAlamofireRequest(request: RKBaseRequest) -> Alamofire.Request {
         //
@@ -96,6 +160,15 @@ public class RKRequestQueue: RKRequestQueueType {
     //
     public func onFinishRequest(request: RKBaseRequest) {
         //
+        dispatch_async(synchronizationQueue) {
+            //
+            if self.activeRequestCount > 0 {
+                self.activeRequestCount -= 1
+            }
+            //
+            self.startNextRequest()
+        }
+    
         dispatch_async(dispatch_get_main_queue()) {
             //
             self.plugins.forEach { plugin in
@@ -106,3 +179,4 @@ public class RKRequestQueue: RKRequestQueueType {
     }
     
 }
+

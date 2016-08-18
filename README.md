@@ -52,7 +52,7 @@ parseResponse方法则负责将parseData得到的数据进一步解析成一个P
 	    }
 	}
 
-其他的请求只需要继承于JSONRequest，并重写parseResponse方法即可
+其他的请求只需要继承于BaseSwiftyJSONRequest，并重写parseResponse方法即可
 
 	class ProfileRequest: BaseSwiftyJSONRequest<Profile> {
 	    
@@ -63,6 +63,9 @@ parseResponse方法则负责将parseData得到的数据进一步解析成一个P
 
 
 
+### Thanks To
+#### [Alamofire](https://github.com/Alamofire/Alamofire)
+#### [AlamofireImage](https://github.com/Alamofire/AlamofireImage)
+#### [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
 
-### Standing on the shoulder of giants
 

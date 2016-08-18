@@ -17,7 +17,7 @@ class HTTPClient {
     
     func startRequest(request: RKBaseRequest) {
         //
-        requestQueue.startRequest(request)
+        requestQueue.addRequest(request)
     }
     
 }

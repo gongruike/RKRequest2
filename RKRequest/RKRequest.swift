@@ -104,11 +104,11 @@ public class RKRequest<ResponseType, TargetType>: RKBaseRequest {
                 result = RKResult.Failure(RKError.EmptyResponseError)
             }
             //
+            self.requestQueue?.onFinishRequest(self)
+            //
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 //
                 self.completionHandler?(result)
-                //
-                self.requestQueue?.onFinishRequest(self)
             }
         }
     }

@@ -23,34 +23,49 @@
 import UIKit
 import Alamofire
 
+public enum RKPrioritization {
+    //
+    case FIFO
+    //
+    case LIFO
+}
+
 public class RKConfiguration {
 
     public var baseURL: NSURL?
+    //
+    public let maximumActiveRequestCount: Int
+    //
+    public let prioritization: RKPrioritization
     //
     public let configuration: NSURLSessionConfiguration
     //
     public let trustPolicyManager: Alamofire.ServerTrustPolicyManager?
     
     public init(baseURL: NSURL?,
+                maximumActiveRequestCount: Int = 3,
+                prioritization: RKPrioritization = .FIFO,
                 configuration: NSURLSessionConfiguration = RKConfiguration.defaultURLSessionConfiguration(),
                 trustPolicyManager: Alamofire.ServerTrustPolicyManager? = nil) {
         //
-        self.baseURL = baseURL
-        self.configuration = configuration
-        self.trustPolicyManager = trustPolicyManager
+        self.baseURL                    = baseURL
+        self.maximumActiveRequestCount  = maximumActiveRequestCount
+        self.prioritization             = prioritization
+        self.configuration              = configuration
+        self.trustPolicyManager         = trustPolicyManager
     }
     
     public class func defaultURLSessionConfiguration() -> NSURLSessionConfiguration {
         //
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         
-        configuration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders
-        configuration.HTTPShouldUsePipelining = true
-        configuration.HTTPShouldSetCookies = false
+        configuration.HTTPAdditionalHeaders         = Alamofire.Manager.defaultHTTPHeaders
+        configuration.HTTPShouldUsePipelining       = true
+        configuration.HTTPShouldSetCookies          = false
         
-        configuration.requestCachePolicy = .UseProtocolCachePolicy
-        configuration.allowsCellularAccess = true
-        configuration.timeoutIntervalForResource = 15
+        configuration.requestCachePolicy            = .UseProtocolCachePolicy
+        configuration.allowsCellularAccess          = true
+        configuration.timeoutIntervalForResource    = 15
         
         configuration.URLCache = defaultURLCache()
         

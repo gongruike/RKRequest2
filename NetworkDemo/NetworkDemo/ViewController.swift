@@ -8,6 +8,16 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let item = UIBarButtonItem(barButtonSystemItem: .Refresh,
+                                   target: self,
+                                   action: #selector(onRefreshBarButtonItemClicked(_:)))
+        navigationItem.rightBarButtonItem = item
+        
+        getPost()
+    }
+    
+    func onRefreshBarButtonItemClicked(sender: UIBarButtonItem)  {
+        //
         getPost()
     }
     

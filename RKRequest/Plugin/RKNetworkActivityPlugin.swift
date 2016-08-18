@@ -23,35 +23,35 @@
 import Foundation
 import UIKit
 
-class RKNetworkActivityPlugin: RKPluginType {
+public class RKNetworkActivityPlugin: RKPluginType {
     
-    var requestCount: Int = 0
+    private var requestCount: Int = 0
     
-    func increment() {
+    public func increment() {
         //
         requestCount += 1
         //
         updateNetworkActivityIndicatorVisible()
     }
     
-    func decrement() {
+    public func decrement() {
         //
         requestCount -= 1
         //
         updateNetworkActivityIndicatorVisible()
     }
     
-    func updateNetworkActivityIndicatorVisible() {
+    public func updateNetworkActivityIndicatorVisible() {
         //
         UIApplication.sharedApplication().networkActivityIndicatorVisible = requestCount != 0
     }
     
     //
-    func willSendRequest(requestQueue: RKRequestQueue, request: RKBaseRequest) {
+    public func willSendRequest(requestQueue: RKRequestQueue, request: RKBaseRequest) {
         increment()
     }
     
-    func didFinishRequest(requestQueue: RKRequestQueue, request: RKBaseRequest) {
+    public func didFinishRequest(requestQueue: RKRequestQueue, request: RKBaseRequest) {
         decrement()
     }
 }

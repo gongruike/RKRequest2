@@ -55,15 +55,15 @@ class BasePageListRequest<T>: RKBaseSwiftyJSONRequest<T> {
     
     let pageNumber: Int
     
-    let pagecCount: Int
+    let perPageCount: Int
     
     init(pageNumber: Int,
-         pagecCount: Int,
+         perPageCount: Int,
          url: Alamofire.URLStringConvertible,
          completionHandler: RKCompletionHandler?) {
         //
         self.pageNumber = pageNumber
-        self.pagecCount = pagecCount
+        self.perPageCount = perPageCount
         //
         super.init(url: url, completionHandler: completionHandler)
     }

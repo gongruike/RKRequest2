@@ -27,21 +27,21 @@ public class RKNetworkActivityPlugin: RKPluginType {
     
     private var requestCount: Int = 0
     
-    public func increment() {
+    private func increment() {
         //
         requestCount += 1
         //
         updateNetworkActivityIndicatorVisible()
     }
     
-    public func decrement() {
+    private func decrement() {
         //
         requestCount -= 1
         //
         updateNetworkActivityIndicatorVisible()
     }
     
-    public func updateNetworkActivityIndicatorVisible() {
+    private func updateNetworkActivityIndicatorVisible() {
         //
         UIApplication.sharedApplication().networkActivityIndicatorVisible = requestCount != 0
     }

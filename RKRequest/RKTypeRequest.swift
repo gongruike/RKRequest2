@@ -41,6 +41,7 @@ public class RKStringRequest<T>: RKRequest<String, T> {
         aRequest?.responseString(completionHandler: { response -> Void in
             //
             self.aResponse = response
+            //
             self.deliverResult()
         })
     }
@@ -61,6 +62,7 @@ public class RKDataRequest<T>: RKRequest<NSData, T> {
         aRequest?.responseData(completionHandler: { response in
             //
             self.aResponse = response
+            //
             self.deliverResult()
         })
     }
@@ -81,6 +83,7 @@ public class RKJSONRequest<T>: RKRequest<AnyObject, T> {
         aRequest?.responseJSON(completionHandler: { response -> Void in
             //
             self.aResponse = response
+            //
             self.deliverResult()
         })
     }

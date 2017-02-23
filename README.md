@@ -1,6 +1,8 @@
 # RKRequest
 ### A request library based on Alamofire that similar to Volley
 
+## 该库已不再维护，请查看https://github.com/gongruike/RKRequest3
+
 这是一个基于Alamofire的iOS网络库，用法类似于安卓的网络框架Volley，每一个请求都是一个对象实例，具体用法请看下面的的介绍或者NetworkDemo工程
 ### Usage
 
